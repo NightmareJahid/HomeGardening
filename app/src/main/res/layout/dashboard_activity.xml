@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar"
+
+        android:layout_height="250dp"
+        android:layout_width="match_parent"
+        >
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:toolbarId="@+id/toolbar"
+            app:titleCollapseMode="scale"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
+
+            app:contentScrim="@color/mint_green">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/dashboard_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/dashboard_bg"
+                    android:scaleType="centerCrop"/>
+
+                <ImageView
+                    android:layout_width="137dp"
+                    android:layout_height="120dp"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ghorbagan_logo" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_width="match_parent"
+                app:title="Ghor Bagan"
+                app:titleTextColor="@color/black"
+                app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"/>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:background="@drawable/dashboard_bg_shape"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvWelcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/tarunno"
+                android:text="@string/welcome_text"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="26dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnRooftop"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_margin="14dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvWelcome">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/ripple_dashboard_button"
+                    android:paddingStart="20dp"
+                    android:weightSum="4">
+
+                    <ImageView
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/dashboard_logo_bg"
+                        android:src="@drawable/roof_gardening" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toRightOf="@+id/img1"
+                        android:fontFamily="@font/nihar"
+                        android:text="ছাদ বাগান"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="30dp" />
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnBalcony"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_margin="14dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnRooftop">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/ripple_dashboard_button"
+                    android:paddingStart="20dp"
+                    android:weightSum="4">
+
+                    <ImageView
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/dashboard_logo_bg"
+                        android:src="@drawable/balcony_gardening" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toRightOf="@+id/img1"
+                        android:fontFamily="@font/nihar"
+                        android:text="বারান্দা বাগান"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="30dp" />
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btnRoom"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_margin="14dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnBalcony">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="1dp"
+                    android:background="@drawable/ripple_dashboard_button"
+                    android:paddingStart="20dp"
+                    android:weightSum="4">
+
+                    <ImageView
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/dashboard_logo_bg"
+                        android:src="@drawable/roof_gardening" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_toRightOf="@+id/img1"
+                        android:fontFamily="@font/nihar"
+                        android:text="ঘর বাগান"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="30dp" />
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/btnRateus"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="26dp"
+                android:src="@drawable/rate_us"
+                app:layout_constraintEnd_toStartOf="@+id/btnAboutus"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnRoom" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Rate us"
+                app:layout_constraintEnd_toEndOf="@+id/btnRateus"
+                app:layout_constraintStart_toStartOf="@+id/btnRateus"
+                app:layout_constraintTop_toBottomOf="@+id/btnRateus" />
+
+            <ImageView
+                android:id="@+id/btnAboutus"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="26dp"
+                android:src="@drawable/about_us"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btnRateus"
+                app:layout_constraintTop_toBottomOf="@+id/btnRoom" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:text="About Us"
+                app:layout_constraintEnd_toEndOf="@+id/btnAboutus"
+                app:layout_constraintStart_toStartOf="@id/btnAboutus"
+                app:layout_constraintTop_toBottomOf="@id/btnAboutus" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
