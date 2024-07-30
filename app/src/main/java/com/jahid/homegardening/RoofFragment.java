@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jahid.homegardening.aderpters.ItemData;
 import com.jahid.homegardening.aderpters.ItemsModel;
 import com.jahid.homegardening.aderpters.recyclerViewAdapter;
 import com.jahid.homegardening.databinding.FragmentRoofBinding;
@@ -25,9 +26,11 @@ public class RoofFragment extends Fragment {
 
     private FragmentRoofBinding binding;
     private List<ItemsModel> itemsModelList;
+    String tag;
 
-    public RoofFragment(List<ItemsModel> itemsModelList) {
+    public RoofFragment(List<ItemsModel> itemsModelList, String tag) {
         this.itemsModelList = itemsModelList;
+        this.tag = tag;
     }
 
     @Override
@@ -48,8 +51,11 @@ public class RoofFragment extends Fragment {
             @Override
             public void getItemClick(int itemPosition) {
 
-                startActivity(new Intent(requireContext(),UnderConstruction.class));
-                FancyToast.makeText(requireContext(),"Wake him up please.....",FancyToast.LENGTH_SHORT,FancyToast.INFO,false).show();
+                Intent intent = new Intent(new Intent(requireContext(), ItemData.class));
+                intent.putExtra("itemPosition",itemPosition);
+                intent.putExtra("tag",tag);
+                startActivity(intent);
+
             }
 
             @Override

@@ -19,6 +19,7 @@
             android:layout_height="match_parent"
             app:toolbarId="@+id/toolbar"
             app:titleCollapseMode="scale"
+            app:titleEnabled="true"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
             app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
 
@@ -49,6 +50,7 @@
                 android:layout_width="match_parent"
                 app:title="Ghor Bagan"
                 app:titleTextColor="@color/black"
+                app:layout_collapseMode="pin"
                 app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"/>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

@@ -1,20 +1,21 @@
 package com.jahid.homegardening.aderpters;
 
 public class ItemsModel {
-    private String itemName,description;
+    private String itemName;
     private String itemPhoto;
+    private  int description;
 
-    public ItemsModel(String itemName, String itemPhoto, String description) {
+    public ItemsModel(String itemName, String itemPhoto, int description) {
         this.description = description;
         this.itemName = itemName;
         this.itemPhoto = itemPhoto;
     }
 
-    public String getDescription() {
+    public int getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(int description) {
         this.description = description;
     }
 

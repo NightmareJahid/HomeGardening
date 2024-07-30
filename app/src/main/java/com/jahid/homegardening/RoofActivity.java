@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.jahid.homegardening.aderpters.AppData;
 import com.jahid.homegardening.databinding.ActivityRoofBinding;
 
 import java.util.ArrayList;
@@ -41,10 +42,10 @@ public class RoofActivity extends AppCompatActivity {
 
 
 
-        RoofFragment fruits = new RoofFragment(AppData.fruitsList);
-        RoofFragment flowers = new RoofFragment(AppData.flowersList);
-        RoofFragment vegetable = new RoofFragment(AppData.vegeList);
-        RoofFragment others = new RoofFragment(AppData.otherList);
+        RoofFragment fruits = new RoofFragment(AppData.fruitsList,"fruitsList");
+        RoofFragment flowers = new RoofFragment(AppData.flowersList,"flowerList");
+        RoofFragment vegetable = new RoofFragment(AppData.vegeList,"vegetable");
+        RoofFragment others = new RoofFragment(AppData.otherList,"others");
 
         // adding objects to the array list..........
 
