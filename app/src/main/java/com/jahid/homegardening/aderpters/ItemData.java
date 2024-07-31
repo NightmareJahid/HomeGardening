@@ -22,6 +22,12 @@ import java.io.InputStream;
 public class ItemData extends AppCompatActivity {
 
     ActivityItemDataBinding actItemDAta;
+    int itemPosition;
+    String tag;
+    ItemsModel itemsModel;
+    String name;
+    int description;
+    String photo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,59 +35,63 @@ public class ItemData extends AppCompatActivity {
         actItemDAta = ActivityItemDataBinding.inflate(getLayoutInflater());
         setContentView(actItemDAta.getRoot());
 
-        int itemPosition = getIntent().getIntExtra("itemPosition",0);
-        String tag = getIntent().getStringExtra("tag");
+        initButtonData();
+        setList();
+        initAllitems();
+        setData();
 
-        ItemsModel itemData;
+    }
 
-        switch (tag) {
-            case "fruitsList": itemData = AppData.fruitsList.get(itemPosition);
-            break;
-            case "flowerList": itemData = AppData.flowersList.get(itemPosition);
-            break;
-            case "vegetable": itemData = AppData.vegeList.get(itemPosition);
-            break;
-            case "others":  itemData = AppData.otherList.get(itemPosition);
-            break;
-
-            default: itemData = AppData.fruitsList.get(itemPosition);
-        }
-
-
-
-        String name = itemData.getItemName();
-
-        String photo = itemData.getItemPhoto();
-
+    private void setData() {
         try {
-            InputStream inputStream = this.getAssets().open(photo);
-            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-            actItemDAta.itemImage.setImageBitmap(bitmap);
+            if (!photo.isBlank()) {
+
+                InputStream inputStream = getAssets().open(photo);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                actItemDAta.itemImage.setImageBitmap(bitmap);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-       int description = itemData.getDescription();
-
-        if (description != 0) actItemDAta.tvDescription.setText(getString(description));
 
         actItemDAta.itemName.setText(name);
 
-
+        if(description != 0 ) actItemDAta.tvDescription.setText(getString(description));
 
         actItemDAta.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-                Log.d("clicked","clicked");
             }
         });
-
-        actItemDAta.itemImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("clicked","clickedImage");
-            }
-        });
-
     }
+
+    private void initAllitems() {
+        name = itemsModel.getItemName();
+        description = itemsModel.getDescription();
+        photo = itemsModel.getItemPhoto();
+    }
+
+    private void setList() {
+        switch (tag) {
+            case "flowerLists":
+                itemsModel = AppData.flowersList.get(itemPosition);
+                break;
+            case "vegetable":
+                itemsModel = AppData.vegeList.get(itemPosition);
+                break;
+            case "others":
+                itemsModel = AppData.otherList.get(itemPosition);
+                break;
+            default:
+                itemsModel = AppData.fruitsList.get(itemPosition);
+        }
+    }
+
+    private void initButtonData() {
+        itemPosition = getIntent().getIntExtra("itemPosition", 0);
+        tag = getIntent().getStringExtra("tag");
+    }
+
+
 }

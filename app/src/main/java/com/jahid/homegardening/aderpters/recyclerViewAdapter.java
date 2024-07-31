@@ -6,6 +6,8 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,12 +32,18 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
         this.isClicked = isClicked;
     }
 
+    public void setFilteredList(List<ItemsModel> filteredList) {
+        this.itemModelList = filteredList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public recyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.items_desgin,parent,false);
         return new ViewHolder(view);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull recyclerViewAdapter.ViewHolder holder, int position) {
@@ -53,6 +61,9 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
             e.printStackTrace();
         }
 
+//        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(),R.anim.animation);
+//        holder.itemView.setAnimation(animation);
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +77,8 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
                 isClicked.getFavClick(holder.getAdapterPosition());
             }
         });
+
+
 
     }
 

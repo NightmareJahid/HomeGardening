@@ -4,17 +4,21 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.jahid.homegardening.aderpters.AppData;
+import com.jahid.homegardening.aderpters.ItemsModel;
 import com.jahid.homegardening.databinding.ActivityRoofBinding;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RoofActivity extends AppCompatActivity {
 
     ActivityRoofBinding actRoof;
+    RoofFragment activeFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,9 +34,23 @@ public class RoofActivity extends AppCompatActivity {
         });
 
 
-
         initFragment();
+
+        actRoof.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                activeFragment.getSearch(newText);
+                return true;
+            }
+        });
+
     }
+
 
     public void initFragment() {
 
@@ -46,6 +64,8 @@ public class RoofActivity extends AppCompatActivity {
         RoofFragment flowers = new RoofFragment(AppData.flowersList,"flowerList");
         RoofFragment vegetable = new RoofFragment(AppData.vegeList,"vegetable");
         RoofFragment others = new RoofFragment(AppData.otherList,"others");
+
+        activeFragment = fruits;
 
         // adding objects to the array list..........
 
@@ -65,6 +85,7 @@ public class RoofActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 actRoof.itemTabs.selectTab(actRoof.itemTabs.getTabAt(position));
+                activeFragment = fragmentsList.get(position);
             }
 
             @Override
@@ -77,6 +98,7 @@ public class RoofActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 actRoof.viewpager.setCurrentItem(tab.getPosition());
+                activeFragment = fragmentsList.get(tab.getPosition());
             }
 
             @Override

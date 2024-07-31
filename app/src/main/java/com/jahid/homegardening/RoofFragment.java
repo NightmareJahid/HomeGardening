@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.jahid.homegardening.aderpters.ItemData;
 import com.jahid.homegardening.aderpters.ItemsModel;
@@ -18,6 +19,7 @@ import com.jahid.homegardening.aderpters.recyclerViewAdapter;
 import com.jahid.homegardening.databinding.FragmentRoofBinding;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -27,11 +29,13 @@ public class RoofFragment extends Fragment {
     private FragmentRoofBinding binding;
     private List<ItemsModel> itemsModelList;
     String tag;
+    recyclerViewAdapter adapter;
 
     public RoofFragment(List<ItemsModel> itemsModelList, String tag) {
         this.itemsModelList = itemsModelList;
         this.tag = tag;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,24 +51,37 @@ public class RoofFragment extends Fragment {
 
         binding.itemRecyclerView.setHasFixedSize(true);
         binding.itemRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        binding.itemRecyclerView.setAdapter(new recyclerViewAdapter(requireContext(), itemsModelList, new recyclerViewAdapter.isClicked() {
+
+        adapter = new recyclerViewAdapter(requireContext(), itemsModelList, new recyclerViewAdapter.isClicked() {
             @Override
             public void getItemClick(int itemPosition) {
-
-                Intent intent = new Intent(new Intent(requireContext(), ItemData.class));
+                Intent intent = new Intent(requireContext(),ItemData.class);
                 intent.putExtra("itemPosition",itemPosition);
                 intent.putExtra("tag",tag);
                 startActivity(intent);
-
             }
 
             @Override
             public void getFavClick(int favPosition) {
-                FancyToast.makeText(requireContext(),"Clickd on favorite button",FancyToast.LENGTH_SHORT,FancyToast.INFO,false).show();
+                Toast.makeText(requireContext(), "Favorite button is clicked!", Toast.LENGTH_SHORT).show();
             }
-        }));
+        });
+        binding.itemRecyclerView.setAdapter(adapter);
 
 
+    }
 
+    public void getSearch(String text) {
+        List<ItemsModel> filteredList = new ArrayList<>();
+
+        for (ItemsModel itemsModel : itemsModelList) {
+
+            if (itemsModel.getItemName().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(itemsModel);
+            }
+            if (!filteredList.isEmpty()) {
+                adapter.setFilteredList(filteredList);
+            }
+        }
     }
 }

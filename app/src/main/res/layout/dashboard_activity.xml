@@ -20,6 +20,8 @@
             app:toolbarId="@+id/toolbar"
             app:titleCollapseMode="scale"
             app:titleEnabled="true"
+            app:collapsedTitleTextColor="@color/black"
+            app:expandedTitleTextColor="#0032CD32"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
             app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
 
