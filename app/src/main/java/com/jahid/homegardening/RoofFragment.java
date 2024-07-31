@@ -49,7 +49,6 @@ public class RoofFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.itemRecyclerView.setHasFixedSize(true);
         binding.itemRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         adapter = new recyclerViewAdapter(requireContext(), itemsModelList, new recyclerViewAdapter.isClicked() {

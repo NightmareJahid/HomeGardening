@@ -73,9 +73,7 @@ public class DashboardActivity extends AppCompatActivity {
         //..................................................................................................
 
 
-
-
-
+        AppData.initData();
 
 
 

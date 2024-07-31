@@ -83,6 +83,12 @@ public class ItemData extends AppCompatActivity {
             case "others":
                 itemsModel = AppData.otherList.get(itemPosition);
                 break;
+            case "roomList":
+                itemsModel = AppData.roomList.get(itemPosition);
+                break;
+            case "balconyList":
+                itemsModel = AppData.balconyList.get(itemPosition);
+                break;
             default:
                 itemsModel = AppData.fruitsList.get(itemPosition);
         }

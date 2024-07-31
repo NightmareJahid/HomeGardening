@@ -1,18 +1,15 @@
 package com.jahid.homegardening.br;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Switch;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.jahid.homegardening.R;
 import com.jahid.homegardening.RoofFragment;
 import com.jahid.homegardening.aderpters.AppData;
+import com.jahid.homegardening.aderpters.ItemData;
 import com.jahid.homegardening.databinding.ActivityBalconyRoomBinding;
 
 public class BalconyRoomActivity extends AppCompatActivity {
@@ -47,7 +44,6 @@ public class BalconyRoomActivity extends AppCompatActivity {
     private void initButtonData() {
         switch (buttonData){
             case "btnRoom": fragmentList = new RoofFragment(AppData.roomList,"roomList");
-
             break;
             case "btnBalcony": fragmentList = new RoofFragment(AppData.balconyList,"balconyList");
             break;

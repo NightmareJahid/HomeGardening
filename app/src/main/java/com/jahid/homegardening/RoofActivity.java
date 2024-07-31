@@ -26,7 +26,6 @@ public class RoofActivity extends AppCompatActivity {
         actRoof = ActivityRoofBinding.inflate(getLayoutInflater());
         setContentView(actRoof.getRoot());
 
-        AppData.initData();
 
         actRoof.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
