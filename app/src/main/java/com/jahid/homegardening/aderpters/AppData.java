@@ -7,10 +7,20 @@ import java.util.List;
 
 public class AppData {
 
+    //............Roof Activity Data......................
     public static List<ItemsModel> fruitsList;
     public static List<ItemsModel> flowersList;
     public static List<ItemsModel> vegeList;
     public static List<ItemsModel> otherList;
+    //....................................................
+
+
+    //.......balcony and room activity lists.....................
+    public static List<ItemsModel> balconyList;
+    public static List<ItemsModel> roomList;
+    //...........................................................
+
+
 
 
     public static void initData() {
@@ -29,7 +39,37 @@ public class AppData {
         flowersList = new ArrayList<>();
         vegeList = new ArrayList<>();
         otherList = new ArrayList<>();
+
+
     }
+
+    public static void initBalconyRoomData() {
+
+        balconyList = new ArrayList<>();
+        balconyList.add(new ItemsModel("ড্রাগন","fruits_photo/dragon.jpg", R.string.dragon_desc));
+        balconyList.add(new ItemsModel("জবা","fruits_photo/mango.jpg",0));
+        balconyList.add(new ItemsModel("গোলাপ","fruits_photo/mango.jpg",0));
+        balconyList.add(new ItemsModel("আম","fruits_photo/mango.jpg",0));
+        balconyList.add(new ItemsModel("আম","fruits_photo/mango.jpg",0));
+        balconyList.add(new ItemsModel("আম","fruits_photo/mango.jpg",0));
+        balconyList.add(new ItemsModel("আম","fruits_photo/mango.jpg",0));
+        balconyList.add(new ItemsModel("আম","fruits_photo/mango.jpg",0));
+        balconyList.add(new ItemsModel("আম","fruits_photo/mango.jpg",0));
+        balconyList.add(new ItemsModel("আম","fruits_photo/mango.jpg",0));
+
+        roomList = new ArrayList<>();
+        roomList.add(new ItemsModel("আম","fruits_photo/mango.jpg",0));
+        roomList.add(new ItemsModel("আম","fruits_photo/mango.jpg",0));
+        roomList.add(new ItemsModel("আম","fruits_photo/mango.jpg",0));
+        roomList.add(new ItemsModel("আম","fruits_photo/mango.jpg",0));
+        roomList.add(new ItemsModel("আম","fruits_photo/mango.jpg",0));
+        roomList.add(new ItemsModel("আম","fruits_photo/mango.jpg",0));
+        roomList.add(new ItemsModel("আম","fruits_photo/mango.jpg",0));
+        roomList.add(new ItemsModel("আম","fruits_photo/mango.jpg",0));
+        roomList.add(new ItemsModel("আম","fruits_photo/mango.jpg",0));
+
+    }
+
 
 
 }

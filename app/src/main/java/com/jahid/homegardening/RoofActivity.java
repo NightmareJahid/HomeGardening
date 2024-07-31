@@ -26,6 +26,8 @@ public class RoofActivity extends AppCompatActivity {
         actRoof = ActivityRoofBinding.inflate(getLayoutInflater());
         setContentView(actRoof.getRoot());
 
+        AppData.initData();
+
         actRoof.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,7 +59,6 @@ public class RoofActivity extends AppCompatActivity {
         ArrayList<RoofFragment> fragmentsList = new ArrayList<>();
 
         // creating objects  of fragments......
-
 
 
         RoofFragment fruits = new RoofFragment(AppData.fruitsList,"fruitsList");

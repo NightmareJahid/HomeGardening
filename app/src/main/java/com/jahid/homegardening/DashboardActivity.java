@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.jahid.homegardening.aderpters.AppData;
+import com.jahid.homegardening.br.BalconyRoomActivity;
 import com.jahid.homegardening.databinding.DashboardActivityBinding;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
@@ -16,11 +17,14 @@ public class DashboardActivity extends AppCompatActivity {
 
 
     DashboardActivityBinding binding;
+    Intent DASHBOARD_TO_ITEM_DATA;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DashboardActivityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        DASHBOARD_TO_ITEM_DATA = new Intent(DashboardActivity.this, BalconyRoomActivity.class);
 
 
         binding.btnAboutus.setOnClickListener(new View.OnClickListener() {
@@ -38,6 +42,11 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+
+
+
+        //........................................Main Buttons..............................
+
         binding.btnRooftop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,19 +57,22 @@ public class DashboardActivity extends AppCompatActivity {
         binding.btnRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DashboardActivity.this,UnderConstruction.class));
+                DASHBOARD_TO_ITEM_DATA.putExtra("buttonName","btnRoom");
+                startActivity(DASHBOARD_TO_ITEM_DATA);
             }
         });
 
         binding.btnBalcony.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DashboardActivity.this,UnderConstruction.class));
+                DASHBOARD_TO_ITEM_DATA.putExtra("buttonName","btnBalcony");
+                startActivity(DASHBOARD_TO_ITEM_DATA);
             }
         });
 
+        //..................................................................................................
 
-        AppData.initData();
+
 
 
 
