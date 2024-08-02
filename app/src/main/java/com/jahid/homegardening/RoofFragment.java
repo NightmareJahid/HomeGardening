@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.jahid.homegardening.aderpters.AppData;
 import com.jahid.homegardening.aderpters.ItemData;
 import com.jahid.homegardening.aderpters.ItemsModel;
 import com.jahid.homegardening.aderpters.recyclerViewAdapter;
@@ -49,6 +50,8 @@ public class RoofFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        if(itemsModelList.isEmpty()) binding.animationView.setVisibility(View.VISIBLE);
+
         binding.itemRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         adapter = new recyclerViewAdapter(requireContext(), itemsModelList, new recyclerViewAdapter.isClicked() {
@@ -58,17 +61,19 @@ public class RoofFragment extends Fragment {
                 intent.putExtra("itemPosition",itemPosition);
                 intent.putExtra("tag",tag);
                 startActivity(intent);
+
             }
 
             @Override
             public void getFavClick(int favPosition) {
-                Toast.makeText(requireContext(), "Favorite button is clicked!", Toast.LENGTH_SHORT).show();
+                AppData.favList.add(itemsModelList.get(favPosition));
             }
         });
         binding.itemRecyclerView.setAdapter(adapter);
 
 
     }
+
 
     public void getSearch(String text) {
         List<ItemsModel> filteredList = new ArrayList<>();

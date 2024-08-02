@@ -1,9 +1,11 @@
-package com.jahid.homegardening;
+package com.jahid.homegardening.aderpters;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+
+import com.jahid.homegardening.RoofFragment;
 
 import java.util.ArrayList;
 

@@ -4,11 +4,13 @@ public class ItemsModel {
     private String itemName;
     private String itemPhoto;
     private  int description;
+    private boolean isFav;
 
-    public ItemsModel(String itemName, String itemPhoto, int description) {
+    public ItemsModel(String itemName, String itemPhoto, int description, boolean isFav) {
         this.description = description;
         this.itemName = itemName;
         this.itemPhoto = itemPhoto;
+        this.isFav = isFav;
     }
 
     public int getDescription() {
@@ -33,5 +35,13 @@ public class ItemsModel {
 
     public void setItemPhoto(String itemPhoto) {
         this.itemPhoto = itemPhoto;
+    }
+
+    public boolean isFav() {
+        return isFav;
+    }
+
+    public void setFav(boolean fav) {
+        isFav = fav;
     }
 }

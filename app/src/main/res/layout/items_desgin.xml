@@ -40,6 +40,7 @@
         android:layout_height="26dp"
         android:layout_marginEnd="20dp"
         android:src="@drawable/favorite"
+        app:tint="@color/ash"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

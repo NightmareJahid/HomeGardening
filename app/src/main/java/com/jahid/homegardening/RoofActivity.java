@@ -1,5 +1,6 @@
 package com.jahid.homegardening;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -9,11 +10,11 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.jahid.homegardening.aderpters.AppData;
-import com.jahid.homegardening.aderpters.ItemsModel;
+import com.jahid.homegardening.aderpters.ViewpagerAdapter;
+import com.jahid.homegardening.br.BalconyRoomActivity;
 import com.jahid.homegardening.databinding.ActivityRoofBinding;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RoofActivity extends AppCompatActivity {
 
@@ -31,6 +32,13 @@ public class RoofActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        actRoof.btnFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RoofActivity.this, FavoriteActivity.class));
             }
         });
 
