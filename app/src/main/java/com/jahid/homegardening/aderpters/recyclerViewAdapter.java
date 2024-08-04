@@ -31,13 +31,15 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
     private Context context;
     private List<ItemsModel> itemModelList;
     private isClicked isClicked;
-    private boolean fabIsClicked;
+    private String tag;
 
-    public recyclerViewAdapter(Context context, List<ItemsModel> itemModelList, recyclerViewAdapter.isClicked isClicked) {
+    public recyclerViewAdapter(Context context, List<ItemsModel> itemModelList, recyclerViewAdapter.isClicked isClicked, String tag) {
         this.context = context;
         this.itemModelList = itemModelList;
         this.isClicked = isClicked;
+        this.tag = tag;
     }
+
 
     public void setFilteredList(List<ItemsModel> filteredList) {
         this.itemModelList = filteredList;
@@ -58,7 +60,18 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
 
         initViews(holder, position);
 
-        fabIsClicked = itemModelList.get(holder.getAdapterPosition()).isFav();
+
+        if (tag.equals("favList")) {
+            holder.btnFav.setVisibility(View.GONE);
+            holder.btnDel.setVisibility(View.VISIBLE);
+            holder.btnDel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    isClicked.getDelClick(holder.getAdapterPosition());
+                    notifyDataSetChanged();
+                }
+            });
+        }
 
 //        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(),R.anim.animation);
 //        holder.itemView.setAnimation(animation);
@@ -73,19 +86,23 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
         holder.btnFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isClicked.getFavClick(holder.getAdapterPosition());
+
                 Log.d("favListSize", AppData.favList.size() + "");
 
+                boolean fabIsClicked = itemModelList.get(holder.getAdapterPosition()).isFav();
+
                 if (!fabIsClicked) {
-                     holder.btnFav.setColorFilter(ContextCompat.getColor(context,R.color.lime_green), PorterDuff.Mode.SRC_IN);
-                     fabIsClicked = !fabIsClicked;
-                    Toast.makeText(context, "এটি পছন্দ তালিকায় যুক্ত হয়েছে!", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    holder.btnFav.setColorFilter(ContextCompat.getColor(context,R.color.ash), PorterDuff.Mode.SRC_IN);
+                    isClicked.getFavClick(holder.getAdapterPosition());
+                    holder.btnFav.setColorFilter(ContextCompat.getColor(context, R.color.lime_green), PorterDuff.Mode.SRC_IN);
                     fabIsClicked = !fabIsClicked;
+                    Toast.makeText(context, "পছন্দ তালিকায় যুক্ত হয়েছে!", Toast.LENGTH_SHORT).show();
+                } else {
+                    holder.btnFav.setColorFilter(ContextCompat.getColor(context, R.color.ash), PorterDuff.Mode.SRC_IN);
+                    fabIsClicked = !fabIsClicked;
+                    AppData.favList.remove(itemModelList.get(holder.getAdapterPosition()));
                     Toast.makeText(context, "পছন্দ তালিকা থেকে সরানো হয়েছে", Toast.LENGTH_SHORT).show();
                 }
+                itemModelList.get(holder.getAdapterPosition()).setFav(fabIsClicked);
             }
         });
 
@@ -115,7 +132,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
 
     //........................................................................
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView itemPhoto, btnFav;
+        ImageView itemPhoto, btnFav, btnDel;
         TextView itemName;
 
         public ViewHolder(@NonNull View itemView) {
@@ -124,6 +141,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
             itemPhoto = itemView.findViewById(R.id.itemPhoto);
             btnFav = itemView.findViewById(R.id.btnFav);
             itemName = itemView.findViewById(R.id.itemName);
+            btnDel = itemView.findViewById(R.id.btnDel);
 
 
         }
@@ -135,5 +153,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
         void getItemClick(int itemPosition);
 
         void getFavClick(int favPosition);
+
+        void getDelClick(int delPosition);
     }
 }

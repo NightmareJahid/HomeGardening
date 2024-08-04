@@ -63,12 +63,18 @@ public class RoofFragment extends Fragment {
                 startActivity(intent);
 
             }
-
             @Override
             public void getFavClick(int favPosition) {
                 AppData.favList.add(itemsModelList.get(favPosition));
             }
-        });
+
+            @Override
+            public void getDelClick(int delPosition) {
+                AppData.favList.remove(delPosition);
+                Toast.makeText(requireContext(), "পছন্দ তালিকা থেকে সরানো হয়েছে", Toast.LENGTH_SHORT).show();
+
+            }
+        },tag);
         binding.itemRecyclerView.setAdapter(adapter);
 
 
