@@ -3,15 +3,11 @@ package com.jahid.homegardening.aderpters;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
 import android.util.Log;
-import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +28,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
     private List<ItemsModel> itemModelList;
     private isClicked isClicked;
     private String tag;
+    private boolean fabIsClicked = false;
 
     public recyclerViewAdapter(Context context, List<ItemsModel> itemModelList, recyclerViewAdapter.isClicked isClicked, String tag) {
         this.context = context;
@@ -46,6 +43,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
         notifyDataSetChanged();
     }
 
+
     @NonNull
     @Override
     public recyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -53,13 +51,19 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
         return new ViewHolder(view);
     }
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @Override
     public void onBindViewHolder(@NonNull recyclerViewAdapter.ViewHolder holder, int position) {
 
 
-        initViews(holder, position);
+        if (favCheck(position)) {
+            holder.btnFav.setColorFilter(ContextCompat.getColor(context,R.color.lime_green),PorterDuff.Mode.SRC_IN);
+        }
+        else {
+            holder.btnFav.setColorFilter(ContextCompat.getColor(context,R.color.ash),PorterDuff.Mode.SRC_IN);
+        }
 
+        initViews(holder, position);
 
         if (tag.equals("favList")) {
             holder.btnFav.setVisibility(View.GONE);
@@ -67,12 +71,13 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
             holder.btnDel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    isClicked.getDelClick(holder.getAdapterPosition());
+                    AppData.favList.remove(itemModelList.get(holder.getAdapterPosition()));
+                    fabIsClicked = !fabIsClicked;
+                    Toast.makeText(context, "পছন্দ তালিকা থেকে সরানো হয়েছে", Toast.LENGTH_SHORT).show();
                     notifyDataSetChanged();
                 }
             });
         }
-
 //        Animation animation = AnimationUtils.loadAnimation(holder.itemView.getContext(),R.anim.animation);
 //        holder.itemView.setAnimation(animation);
 
@@ -89,30 +94,38 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
 
                 Log.d("favListSize", AppData.favList.size() + "");
 
-                boolean fabIsClicked = itemModelList.get(holder.getAdapterPosition()).isFav();
+                boolean favChecked = favCheck(position);
 
-                if (!fabIsClicked) {
+                if (!favChecked) {
                     isClicked.getFavClick(holder.getAdapterPosition());
                     holder.btnFav.setColorFilter(ContextCompat.getColor(context, R.color.lime_green), PorterDuff.Mode.SRC_IN);
-                    fabIsClicked = !fabIsClicked;
                     Toast.makeText(context, "পছন্দ তালিকায় যুক্ত হয়েছে!", Toast.LENGTH_SHORT).show();
+                    favChecked = !favChecked;
                 } else {
-                    holder.btnFav.setColorFilter(ContextCompat.getColor(context, R.color.ash), PorterDuff.Mode.SRC_IN);
-                    fabIsClicked = !fabIsClicked;
                     AppData.favList.remove(itemModelList.get(holder.getAdapterPosition()));
+                    holder.btnFav.setColorFilter(ContextCompat.getColor(context, R.color.ash), PorterDuff.Mode.SRC_IN);
                     Toast.makeText(context, "পছন্দ তালিকা থেকে সরানো হয়েছে", Toast.LENGTH_SHORT).show();
+                    favChecked = !favChecked;
                 }
-                itemModelList.get(holder.getAdapterPosition()).setFav(fabIsClicked);
+
             }
         });
 
     }
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
     public int getItemCount() {
         return itemModelList.size();
     }
+
+    boolean favCheck(int position) {
+        if (AppData.favList.contains(itemModelList.get(position))) {
+            return true;
+        }
+        return false;
+    }
+
 
 
     private void initViews(recyclerViewAdapter.ViewHolder holder, int position) {

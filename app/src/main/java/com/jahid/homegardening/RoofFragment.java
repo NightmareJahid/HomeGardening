@@ -31,10 +31,16 @@ public class RoofFragment extends Fragment {
     private List<ItemsModel> itemsModelList;
     String tag;
     recyclerViewAdapter adapter;
+    Boolean clearIsClicked;
 
     public RoofFragment(List<ItemsModel> itemsModelList, String tag) {
         this.itemsModelList = itemsModelList;
         this.tag = tag;
+    }
+
+    public void setClearButton () {
+        itemsModelList.clear();
+        adapter.notifyDataSetChanged();
     }
 
 
@@ -65,6 +71,24 @@ public class RoofFragment extends Fragment {
             }
             @Override
             public void getFavClick(int favPosition) {
+
+//                boolean haveItem = false;
+//                for (ItemsModel favItem : AppData.favList) {
+//                    if (favItem == itemsModelList.get(favPosition)) {
+//                        haveItem = !haveItem;
+//                        break;
+//                    }
+//                }
+//
+//                if (!haveItem) {
+//                    AppData.favList.add(itemsModelList.get(favPosition));
+//                    Toast.makeText(requireContext(), "পছন্দ তালিকায় যুক্ত হয়েছে!", Toast.LENGTH_SHORT).show();
+//                }
+//                else {
+//                    Toast.makeText(requireContext(), "এটি আপনার পছন্দ তালিকায় আছে", Toast.LENGTH_SHORT).show();
+//                }
+//
+//                haveItem = !haveItem;
                 AppData.favList.add(itemsModelList.get(favPosition));
             }
 
@@ -75,9 +99,16 @@ public class RoofFragment extends Fragment {
 
             }
         },tag);
+
         binding.itemRecyclerView.setAdapter(adapter);
 
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        adapter.notifyDataSetChanged();
     }
 
 

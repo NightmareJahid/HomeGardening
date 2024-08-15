@@ -28,8 +28,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/lime_green"
-                android:background="@drawable/ripple_button"
+                app:tint="@color/color_changed"
                 />
 
             <ImageView
@@ -55,22 +54,22 @@
                 android:textSize="26dp"
                 android:layout_marginBottom="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btnFav"
+                app:layout_constraintEnd_toStartOf="@+id/btnDel"
                 app:layout_constraintStart_toEndOf="@+id/appIcon"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/btnFav"
+                android:id="@+id/btnDel"
                 android:layout_width="45dp"
                 android:layout_height="36dp"
                 android:elevation="10dp"
                 android:padding="5dp"
-                android:src="@drawable/favorite"
+                android:src="@drawable/delete_all_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/lime_green"
-                android:background="@drawable/ripple_button"/>
+                app:tint="@color/color_changed"
+                />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

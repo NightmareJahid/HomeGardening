@@ -34,14 +34,6 @@ public class FavoriteActivity extends AppCompatActivity {
             }
         });
 
-
-        actFav.btnFav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(FavoriteActivity.this,DashboardActivity.class));
-            }
-        });
-
         favFragment = new RoofFragment(AppData.favList,"favList");
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -49,9 +41,16 @@ public class FavoriteActivity extends AppCompatActivity {
         fragmentTransaction.commit();
 
 
-
-
+        actFav.btnDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!AppData.favList.isEmpty()) {
+                    favFragment.setClearButton();
+                }
+            }
+        });
 
 
     }
+
 }
