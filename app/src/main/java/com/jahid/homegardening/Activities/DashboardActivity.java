@@ -1,4 +1,4 @@
-package com.jahid.homegardening;
+package com.jahid.homegardening.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,8 +7,8 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.jahid.homegardening.aderpters.AppData;
-import com.jahid.homegardening.br.BalconyRoomActivity;
+import com.jahid.homegardening.UnderConstruction;
+import com.jahid.homegardening.Data.AppData;
 import com.jahid.homegardening.databinding.DashboardActivityBinding;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
@@ -32,7 +32,7 @@ public class DashboardActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("Message","About button is clickd!");
                 FancyToast.makeText(DashboardActivity.this,"Developer is sleeping !",FancyToast.LENGTH_SHORT,FancyToast.INFO,false).show();
-                startActivity(new Intent(DashboardActivity.this,UnderConstruction.class));
+                startActivity(new Intent(DashboardActivity.this, UnderConstruction.class));
             }
         });
         binding.btnRateus.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +50,7 @@ public class DashboardActivity extends AppCompatActivity {
         binding.btnRooftop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DashboardActivity.this,RoofActivity.class));
+                startActivity(new Intent(DashboardActivity.this, RoofActivity.class));
             }
         });
 
@@ -72,10 +72,8 @@ public class DashboardActivity extends AppCompatActivity {
 
         //..................................................................................................
 
-
-        AppData.initData();
-
-
+        AppData.initArrays();
+        Log.d("check",AppData.fruitsList.size()+"");
 
     }
 }

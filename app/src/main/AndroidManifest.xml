@@ -13,13 +13,13 @@
         android:theme="@style/Theme.HomeGardening"
         tools:targetApi="31">
         <activity
-            android:name=".FavoriteActivity"
+            android:name=".Activities.FavoriteActivity"
             android:exported="false" />
         <activity
-            android:name=".br.BalconyRoomActivity"
+            android:name=".Activities.BalconyRoomActivity"
             android:exported="false" />
         <activity
-            android:name=".aderpters.ItemData"
+            android:name=".Activities.ItemData"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
@@ -28,10 +28,10 @@
             android:name=".UnderConstruction"
             android:exported="false" />
         <activity
-            android:name=".RoofActivity"
+            android:name=".Activities.RoofActivity"
             android:exported="false" />
         <activity
-            android:name=".DashboardActivity"
+            android:name=".Activities.DashboardActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

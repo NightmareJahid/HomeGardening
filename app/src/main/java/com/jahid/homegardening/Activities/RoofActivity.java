@@ -1,4 +1,4 @@
-package com.jahid.homegardening;
+package com.jahid.homegardening.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +9,9 @@ import androidx.appcompat.widget.SearchView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
-import com.jahid.homegardening.aderpters.AppData;
+import com.jahid.homegardening.RoofFragment;
+import com.jahid.homegardening.Data.AppData;
 import com.jahid.homegardening.aderpters.ViewpagerAdapter;
-import com.jahid.homegardening.br.BalconyRoomActivity;
 import com.jahid.homegardening.databinding.ActivityRoofBinding;
 
 import java.util.ArrayList;

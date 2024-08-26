@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".br.BalconyRoomActivity">
+    tools:context=".Activities.BalconyRoomActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/customToolbar"
@@ -28,8 +28,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/lime_green"
-                android:background="@color/color_changed"
+                app:tint="@color/color_changed"
                 />
 
             <ImageView
@@ -68,9 +67,7 @@
                 android:src="@drawable/favorite"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/lime_green"
-                android:background="@color/color_changed"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -87,6 +84,7 @@
         app:queryHint="এখানে খুজুন......"
         app:iconifiedByDefault="false"
         />
+
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"

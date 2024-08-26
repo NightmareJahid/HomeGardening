@@ -13,19 +13,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.jahid.homegardening.aderpters.AppData;
-import com.jahid.homegardening.aderpters.ItemData;
-import com.jahid.homegardening.aderpters.ItemsModel;
+import com.jahid.homegardening.Data.AppData;
+import com.jahid.homegardening.Activities.ItemData;
+import com.jahid.homegardening.Data.ItemsModel;
 import com.jahid.homegardening.aderpters.recyclerViewAdapter;
 import com.jahid.homegardening.databinding.FragmentRoofBinding;
-import com.shashank.sony.fancytoastlib.FancyToast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class RoofFragment extends Fragment {
-
 
     private FragmentRoofBinding binding;
     private List<ItemsModel> itemsModelList;
@@ -55,7 +53,6 @@ public class RoofFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         if(itemsModelList.isEmpty()) binding.animationView.setVisibility(View.VISIBLE);
 
         binding.itemRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -117,7 +114,7 @@ public class RoofFragment extends Fragment {
 
         for (ItemsModel itemsModel : itemsModelList) {
 
-            if (itemsModel.getItemName().toLowerCase().contains(text.toLowerCase())) {
+            if (itemsModel.getTitle().toLowerCase().contains(text.toLowerCase())) {
                 filteredList.add(itemsModel);
             }
             if (!filteredList.isEmpty()) {

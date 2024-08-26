@@ -1,4 +1,4 @@
-package com.jahid.homegardening.br;
+package com.jahid.homegardening.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +9,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.jahid.homegardening.FavoriteActivity;
 import com.jahid.homegardening.R;
 import com.jahid.homegardening.RoofFragment;
-import com.jahid.homegardening.aderpters.AppData;
+import com.jahid.homegardening.Data.AppData;
 import com.jahid.homegardening.databinding.ActivityBalconyRoomBinding;
 
 public class BalconyRoomActivity extends AppCompatActivity {
@@ -28,9 +27,6 @@ public class BalconyRoomActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         actBR = ActivityBalconyRoomBinding.inflate(getLayoutInflater());
         setContentView(actBR.getRoot());
-
-
-        AppData.initBalconyRoomData();
 
         setButtonData();
 

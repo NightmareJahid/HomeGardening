@@ -16,7 +16,10 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.jahid.homegardening.Data.AppData;
+import com.jahid.homegardening.Data.ItemsModel;
 import com.jahid.homegardening.R;
+import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
 import java.util.List;
@@ -112,6 +115,8 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
         });
 
     }
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     @Override
@@ -129,18 +134,8 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
 
 
     private void initViews(recyclerViewAdapter.ViewHolder holder, int position) {
-        holder.itemName.setText(itemModelList.get(position).getItemName());
-
-        String imgResource = itemModelList.get(position).getItemPhoto();
-
-        try {
-            InputStream inputStream = context.getAssets().open(imgResource);
-            Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-            holder.itemPhoto.setImageBitmap(bitmap);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        holder.itemName.setText(itemModelList.get(position).getTitle());
+        Picasso.get().load(itemModelList.get(position).getImageUrl()).into(holder.itemPhoto);
     }
 
     //........................................................................
