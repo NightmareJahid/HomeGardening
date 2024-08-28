@@ -15,12 +15,14 @@ public class FavoriteActivity extends AppCompatActivity {
 
     ActivityFavoriteBinding actFav;
     RoofFragment favFragment;
+    AppData appData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         actFav = ActivityFavoriteBinding.inflate(getLayoutInflater());
         setContentView(actFav.getRoot());
+        appData = AppData.getAppData();
 
         actFav.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,7 +31,7 @@ public class FavoriteActivity extends AppCompatActivity {
             }
         });
 
-        favFragment = new RoofFragment(AppData.favList,"favList");
+        favFragment = new RoofFragment(appData.favList,"favList");
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.fragmentContainer,favFragment);
@@ -39,7 +41,7 @@ public class FavoriteActivity extends AppCompatActivity {
         actFav.btnDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!AppData.favList.isEmpty()) {
+                if (!appData.favList.isEmpty()) {
                     favFragment.setClearButton();
                 }
             }

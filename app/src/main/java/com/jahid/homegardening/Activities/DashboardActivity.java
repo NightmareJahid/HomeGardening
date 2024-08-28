@@ -72,8 +72,5 @@ public class DashboardActivity extends AppCompatActivity {
 
         //..................................................................................................
 
-        AppData.initArrays();
-        Log.d("check",AppData.fruitsList.size()+"");
-
     }
 }

@@ -21,6 +21,7 @@ public class BalconyRoomActivity extends AppCompatActivity {
 
     String buttonData;
     String actName ;
+    AppData appData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class BalconyRoomActivity extends AppCompatActivity {
         actBR = ActivityBalconyRoomBinding.inflate(getLayoutInflater());
         setContentView(actBR.getRoot());
 
+        appData = AppData.getAppData();
         setButtonData();
 
 
@@ -74,12 +76,12 @@ public class BalconyRoomActivity extends AppCompatActivity {
     private void initButtonData() {
         switch (buttonData){
             case "btnRoom":
-                fragmentList = new RoofFragment(AppData.roomList,"roomList");
+                fragmentList = new RoofFragment(appData.roomList,"roomList");
                 actName = "ঘর বাগান";
                 Log.d("actName",actName+"");
             break;
             case "btnBalcony":
-                fragmentList = new RoofFragment(AppData.balconyList,"balconyList");
+                fragmentList = new RoofFragment(appData.balconyList,"balconyList");
                 actName = "বারান্দা বাগান";
                 Log.d("actName",actName+"");
             break;

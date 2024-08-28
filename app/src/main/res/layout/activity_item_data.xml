@@ -28,14 +28,13 @@
                 <ImageView
                     android:id="@+id/btnBack"
                     android:layout_width="45dp"
-                    android:layout_height="26dp"
-                    android:layout_margin="15dp"
+                    android:layout_height="30dp"
+                    android:layout_margin="25dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
                     android:src="@drawable/arrow_back"
-                    android:background="@drawable/ripple_button"
-                    android:elevation="20dp"
                     app:tint="@color/white"
+                    android:elevation="20dp"
                     />
 
                 <ImageView
@@ -63,9 +62,8 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="10dp"
-
-
+        android:padding="16dp"
+        android:background="@drawable/nested_scrollview_bg"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
@@ -73,7 +71,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
             <TextView
-                android:id="@+id/itemName"
+                android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -84,15 +82,56 @@
                 android:textAlignment="center"
                 android:fontFamily="@font/alinur"/>
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="পরিচিতিঃ"
+                android:fontFamily="@font/alinur"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp"
+                android:textSize="22dp"/>
+            <TextView
+                android:id="@+id/tvIntro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:fontFamily="@font/sananda"
+                android:layout_marginBottom="8dp"
+                android:text="পেয়ারা একটি সুস্বাদু ফল এটি সাধারনত ছাদেও রোপন করা যায়। পেয়ারা একটি সুস্বাদু ফল এটি সাধারনত ছাদেও রোপন করা যায়।পেয়ারা একটি সুস্বাদু ফল এটি সাধারনত ছাদেও রোপন করা যায়।পেয়ারা একটি সুস্বাদু ফল এটি সাধারনত ছাদেও রোপন করা যায়।পেয়ারা একটি সুস্বাদু ফল এটি সাধারনত ছাদেও রোপন করা যায়।"
+            />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="বর্ননাঃ"
+                android:fontFamily="@font/alinur"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp"
+                android:textSize="22dp"/>
+            <TextView
                 android:id="@+id/tvDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
-                android:textColor="@color/black"
-                android:textIsSelectable="true"
-                android:textColorHighlight="@color/lime_green"
-                android:layout_margin="15dp"
+                android:fontFamily="@font/sananda"
+                android:layout_marginBottom="8dp"
+                android:text="পেয়ারা একটি সুস্বাদু ফল এটি সাধারনত ছাদেও রোপন করা যায়। পেয়ারা একটি সুস্বাদু ফল এটি সাধারনত ছাদেও রোপন করা যায়।পেয়ারা একটি সুস্বাদু ফল এটি সাধারনত ছাদেও রোপন করা যায়।পেয়ারা একটি সুস্বাদু ফল এটি সাধারনত ছাদেও রোপন করা যায়।পেয়ারা একটি সুস্বাদু ফল এটি সাধারনত ছাদেও রোপন করা যায়।"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="রোপন পদ্ধতিঃ"
                 android:fontFamily="@font/alinur"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp"
+                android:textSize="22dp"/>
+            <TextView
+                android:id="@+id/tvProcess"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:fontFamily="@font/sananda"
+                android:layout_marginBottom="8dp"
+                android:text="পেয়ারা একটি সুস্বাদু ফল এটি সাধারনত ছাদেও রোপন করা যায়। পেয়ারা একটি সুস্বাদু ফল এটি সাধারনত ছাদেও রোপন করা যায়।পেয়ারা একটি সুস্বাদু ফল এটি সাধারনত ছাদেও রোপন করা যায়।পেয়ারা একটি সুস্বাদু ফল এটি সাধারনত ছাদেও রোপন করা যায়।পেয়ারা একটি সুস্বাদু ফল এটি সাধারনত ছাদেও রোপন করা যায়।"
                 />
 
         </LinearLayout>

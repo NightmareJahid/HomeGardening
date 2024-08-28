@@ -32,12 +32,14 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
     private isClicked isClicked;
     private String tag;
     private boolean fabIsClicked = false;
+    private AppData appData;
 
     public recyclerViewAdapter(Context context, List<ItemsModel> itemModelList, recyclerViewAdapter.isClicked isClicked, String tag) {
         this.context = context;
         this.itemModelList = itemModelList;
         this.isClicked = isClicked;
         this.tag = tag;
+        appData = AppData.getAppData();
     }
 
 
@@ -74,7 +76,8 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
             holder.btnDel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AppData.favList.remove(itemModelList.get(holder.getAdapterPosition()));
+                    appData = AppData.getAppData();
+                    appData.favList.remove(itemModelList.get(holder.getAdapterPosition()));
                     fabIsClicked = !fabIsClicked;
                     Toast.makeText(context, "পছন্দ তালিকা থেকে সরানো হয়েছে", Toast.LENGTH_SHORT).show();
                     notifyDataSetChanged();
@@ -95,7 +98,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
             @Override
             public void onClick(View v) {
 
-                Log.d("favListSize", AppData.favList.size() + "");
+                Log.d("favListSize", appData.favList.size() + "");
 
                 boolean favChecked = favCheck(position);
 
@@ -105,7 +108,7 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
                     Toast.makeText(context, "পছন্দ তালিকায় যুক্ত হয়েছে!", Toast.LENGTH_SHORT).show();
                     favChecked = !favChecked;
                 } else {
-                    AppData.favList.remove(itemModelList.get(holder.getAdapterPosition()));
+                    appData.favList.remove(itemModelList.get(holder.getAdapterPosition()));
                     holder.btnFav.setColorFilter(ContextCompat.getColor(context, R.color.ash), PorterDuff.Mode.SRC_IN);
                     Toast.makeText(context, "পছন্দ তালিকা থেকে সরানো হয়েছে", Toast.LENGTH_SHORT).show();
                     favChecked = !favChecked;
@@ -125,7 +128,8 @@ public class recyclerViewAdapter extends RecyclerView.Adapter<recyclerViewAdapte
     }
 
     boolean favCheck(int position) {
-        if (AppData.favList.contains(itemModelList.get(position))) {
+
+        if (appData.favList.contains(itemModelList.get(position))) {
             return true;
         }
         return false;

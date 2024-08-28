@@ -7,10 +7,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.Toast;
 
 import com.jahid.homegardening.Data.AppData;
@@ -23,13 +25,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class RoofFragment extends Fragment {
+public class RoofFragment extends Fragment{
 
     private FragmentRoofBinding binding;
     private List<ItemsModel> itemsModelList;
     String tag;
     recyclerViewAdapter adapter;
-    Boolean clearIsClicked;
+    AppData appData;
 
     public RoofFragment(List<ItemsModel> itemsModelList, String tag) {
         this.itemsModelList = itemsModelList;
@@ -53,8 +55,7 @@ public class RoofFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(itemsModelList.isEmpty()) binding.animationView.setVisibility(View.VISIBLE);
-
+        appData = AppData.getAppData();
         binding.itemRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         adapter = new recyclerViewAdapter(requireContext(), itemsModelList, new recyclerViewAdapter.isClicked() {
@@ -68,43 +69,31 @@ public class RoofFragment extends Fragment {
             }
             @Override
             public void getFavClick(int favPosition) {
-
-//                boolean haveItem = false;
-//                for (ItemsModel favItem : AppData.favList) {
-//                    if (favItem == itemsModelList.get(favPosition)) {
-//                        haveItem = !haveItem;
-//                        break;
-//                    }
-//                }
-//
-//                if (!haveItem) {
-//                    AppData.favList.add(itemsModelList.get(favPosition));
-//                    Toast.makeText(requireContext(), "পছন্দ তালিকায় যুক্ত হয়েছে!", Toast.LENGTH_SHORT).show();
-//                }
-//                else {
-//                    Toast.makeText(requireContext(), "এটি আপনার পছন্দ তালিকায় আছে", Toast.LENGTH_SHORT).show();
-//                }
-//
-//                haveItem = !haveItem;
-                AppData.favList.add(itemsModelList.get(favPosition));
+                appData.favList.add(itemsModelList.get(favPosition));
             }
 
             @Override
             public void getDelClick(int delPosition) {
-                AppData.favList.remove(delPosition);
+                appData.favList.remove(delPosition);
                 Toast.makeText(requireContext(), "পছন্দ তালিকা থেকে সরানো হয়েছে", Toast.LENGTH_SHORT).show();
 
             }
         },tag);
 
         binding.itemRecyclerView.setAdapter(adapter);
+        binding.swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                adapter.notifyDataSetChanged();
+                binding.swipeLayout.setRefreshing(false);
+            }
+        });
 
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
         adapter.notifyDataSetChanged();
     }
 
