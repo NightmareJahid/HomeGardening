@@ -76,7 +76,6 @@ public class RoofFragment extends Fragment{
             public void getDelClick(int delPosition) {
                 appData.favList.remove(delPosition);
                 Toast.makeText(requireContext(), "পছন্দ তালিকা থেকে সরানো হয়েছে", Toast.LENGTH_SHORT).show();
-
             }
         },tag);
 
