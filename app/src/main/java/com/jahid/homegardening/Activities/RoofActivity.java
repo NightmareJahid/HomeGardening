@@ -93,8 +93,10 @@ public class RoofActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
+
                 actRoof.itemTabs.selectTab(actRoof.itemTabs.getTabAt(position));
                 activeFragment = fragmentsList.get(position);
+
             }
 
             @Override
@@ -106,8 +108,10 @@ public class RoofActivity extends AppCompatActivity {
         actRoof.itemTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+
                 actRoof.viewpager.setCurrentItem(tab.getPosition());
                 activeFragment = fragmentsList.get(tab.getPosition());
+
             }
 
             @Override
